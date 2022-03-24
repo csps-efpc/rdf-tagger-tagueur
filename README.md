@@ -1,4 +1,4 @@
-# rdftagger
+# RDF tagger / tagueur
 
 A simple JavaFX app illustrating how RDF triples can be authored with as few user gestures as possible.
 
