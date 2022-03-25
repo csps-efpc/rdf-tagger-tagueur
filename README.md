@@ -84,8 +84,6 @@ Authors: Joshua Turner
 
 ## Pending enhancements:
 
-* I18n - would only need to replace the labels in the FXML declaration with i18n
-references and then create standard Java I18n files.
 * Object organization - Figure out a usable way to make the set of objects 
 navigable in the left-hand pane so that more can be tackled at a time. There's a 
 critical tradeoff in cognitive load for users. It might be easier to just 
