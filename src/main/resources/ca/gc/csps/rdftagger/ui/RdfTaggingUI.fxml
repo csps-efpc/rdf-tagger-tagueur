@@ -22,29 +22,29 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                     <children>
-                        <JFXButton onAction="#loadSubjectsAction" text="Load Subjects..." />
-                        <JFXButton onAction="#loadPredicatesAction" text="Load Predicates..." />
-                        <JFXButton onAction="#loadObjectsAction" text="Load Objects..." />
+                        <JFXButton onAction="#loadSubjectsAction" text="%button.loadSubjects" />
+                        <JFXButton onAction="#loadPredicatesAction" text="%button.loadPredicates" />
+                        <JFXButton onAction="#loadObjectsAction" text="%button.loadObjects" />
                     </children>
                 </HBox>
             </center>
             <right>
-                <JFXButton onAction="#saveAction" text="Save..." BorderPane.alignment="CENTER" />
+                <JFXButton onAction="#saveAction" text="%button.save" BorderPane.alignment="CENTER" />
             </right>
         </JFXToolbar>
         <SplitPane dividerPositions="0.46238244514106586" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
             <items>
                 <VBox spacing="5.0">
                     <children>
-                        <Label text="Subject" />
+                        <Label text="%label.subject" />
                         <ComboBox fx:id="subjectComboBox" onAction="#subjectComboBoxAction" prefWidth="1000.0" />
                         <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                             <VBox fx:id="objectButtonContainer" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
                         </ScrollPane>
                         <HBox VBox.vgrow="NEVER">
                             <children>
-                                <JFXButton fx:id="previousButton" buttonType="RAISED" onAction="#previousAction" prefHeight="50.0" prefWidth="400.0" ripplerFill="#d3d3d3" text="Previous" HBox.hgrow="ALWAYS" />
-                                <JFXButton fx:id="nextButton" buttonType="RAISED" onAction="#nextAction" prefHeight="50.0" prefWidth="400.0" ripplerFill="LIGHTGRAY" text="Next" HBox.hgrow="ALWAYS" />
+                                <JFXButton fx:id="previousButton" buttonType="RAISED" onAction="#previousAction" prefHeight="50.0" prefWidth="400.0" ripplerFill="#d3d3d3" text="%button.previous" HBox.hgrow="ALWAYS" />
+                                <JFXButton fx:id="nextButton" buttonType="RAISED" onAction="#nextAction" prefHeight="50.0" prefWidth="400.0" ripplerFill="LIGHTGRAY" text="%button.next" HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
                     </children>

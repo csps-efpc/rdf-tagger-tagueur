@@ -3,6 +3,7 @@ package ca.gc.csps.rdftagger.ui;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +30,8 @@ public class RdfTaggingUI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        Parent root = loader.load(getClass().getResourceAsStream("RdfTaggingUI.fxml"));
+        ResourceBundle rb = ResourceBundle.getBundle("ca.gc.csps.rdftagger.ui.i18n");
+        Parent root = loader.load(getClass().getResource("/ca/gc/csps/rdftagger/ui/RdfTaggingUI.fxml"), rb);
         Scene scene = new Scene(root);
         primaryStage.setTitle("RDF Tagger");
         primaryStage.getIcons().clear();
