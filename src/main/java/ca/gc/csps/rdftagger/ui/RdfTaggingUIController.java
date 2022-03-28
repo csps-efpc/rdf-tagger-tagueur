@@ -162,11 +162,11 @@ public class RdfTaggingUIController {
         TreeSet<String> toLoad = new TreeSet<>();
         for (File file : filesToOpen) {
             if (file.getName().endsWith(".csv")) {
-                try (CSVParser parser = CSVParser.parse(file, StandardCharsets.UTF_8, CSVFormat.EXCEL)) {
+                try ( CSVParser parser = CSVParser.parse(file, StandardCharsets.UTF_8, CSVFormat.EXCEL)) {
                     parseLinesAndAliasesFromCsv(parser, toLoad);
                 }
             } else if (file.getName().endsWith(".tsv")) {
-                try (CSVParser parser = CSVParser.parse(file, StandardCharsets.UTF_8, CSVFormat.TDF)) {
+                try ( CSVParser parser = CSVParser.parse(file, StandardCharsets.UTF_8, CSVFormat.TDF)) {
                     parseLinesAndAliasesFromCsv(parser, toLoad);
                 }
             } else {
@@ -356,5 +356,17 @@ public class RdfTaggingUIController {
             snackbarLayout.setBackground(new Background(new BackgroundFill(new Color(0.8D, 0.8D, 0.8D, 0.5D), new CornerRadii(5D), Insets.EMPTY)));
             snackBar.enqueue(new JFXSnackbar.SnackbarEvent(snackbarLayout));
         });
+    }
+
+    void loadRDFModel(List<File> files) {
+        files.forEach((f) -> {
+            try {
+                model.load(f.toPath());
+            } catch (IOException ex) {
+                handleException(ex);
+            }
+        });
+        // Load the state for the current subject into the UI.
+        loadSubject(subjectComboBox.getSelectionModel().getSelectedItem());
     }
 }

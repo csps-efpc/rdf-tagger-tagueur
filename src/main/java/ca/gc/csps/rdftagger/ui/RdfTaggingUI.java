@@ -29,9 +29,9 @@ public class RdfTaggingUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
         ResourceBundle rb = ResourceBundle.getBundle("ca.gc.csps.rdftagger.ui.i18n");
-        Parent root = loader.load(getClass().getResource("/ca/gc/csps/rdftagger/ui/RdfTaggingUI.fxml"), rb);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ca/gc/csps/rdftagger/ui/RdfTaggingUI.fxml"), rb);
+        Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("RDF Tagger");
         primaryStage.getIcons().clear();
@@ -40,6 +40,7 @@ public class RdfTaggingUI extends Application {
         primaryStage.show();
         RdfTaggingUIController controller = loader.getController();
         Platform.runLater(() -> {
+
             Parameters cliParms = this.getParameters();
             if (!cliParms.getUnnamed().isEmpty()) {
                 controller.loadSubjectsFile(Arrays.asList(new File[]{new File(cliParms.getUnnamed().get(0))}));
@@ -48,6 +49,9 @@ public class RdfTaggingUI extends Application {
                 }
                 if (cliParms.getUnnamed().size() > 2) {
                     controller.loadObjectsFile(Arrays.asList(new File[]{new File(cliParms.getUnnamed().get(2))}));
+                }
+                if (cliParms.getUnnamed().size() > 3) {
+                    controller.loadRDFModel(Arrays.asList(new File[]{new File(cliParms.getUnnamed().get(3))}));
                 }
             }
         });

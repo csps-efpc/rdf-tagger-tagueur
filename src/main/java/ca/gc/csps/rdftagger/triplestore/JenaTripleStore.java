@@ -1,6 +1,8 @@
 package ca.gc.csps.rdftagger.triplestore;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,7 +28,7 @@ import org.apache.jena.rdf.model.StmtIterator;
  */
 public class JenaTripleStore implements ITripleStore {
 
-    private Model model = ModelFactory.createDefaultModel();
+    private final Model model = ModelFactory.createDefaultModel();
 
     @Override
     public void put(RDFTriple triple) {
@@ -114,13 +116,19 @@ public class JenaTripleStore implements ITripleStore {
     }
 
     public void save(Path path) {
-        try (OutputStream out = Files.newOutputStream(path.toAbsolutePath(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+        try ( OutputStream out = Files.newOutputStream(path.toAbsolutePath(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
             model.write(out, "TTL");
             out.flush();
             //TODO: notify the user of success...
         } catch (IOException ex) {
             Logger.getLogger(JenaTripleStore.class.getName()).log(Level.SEVERE, null, ex);
             //TODO: notify the user.
+        }
+    }
+
+    public void load(Path path) throws IOException {
+        try ( InputStream in = Files.newInputStream(path, StandardOpenOption.READ)) {
+            model.read(in, "http://csps-efpc.gc.ca/", "TURTLE");
         }
     }
 
