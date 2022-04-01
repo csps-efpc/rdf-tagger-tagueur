@@ -91,5 +91,3 @@ organize work so a subject matter expert only needs to work on a few objects at
 a time.
 * Auto-save
 * Left-handed/Right-handed mode
-* Load an existing Turtle file on start-up, so that users can pause and resume 
-work. This would be particularly useful with auto-save.
